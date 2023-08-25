@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React no HTML</title>
+    <style>
+    .rosa{
+        color: deeppink;
+    }
+    .blue {
+        color: blue;
+    }
+    </style>
+</style>
+</head>
+<body>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <div id="root"></div>
+
+<script type="text/babel">
+    
+  function Dados ({ nome, sobrenome, dia, mes, ano }) { // passo 2
+        // passo 3
+        return <>
+            <p className="rosa"> {nome} {sobrenome} </p>
+            <p className="blue" > {dia} / {mes}/ { ano} </p>
+
+            <div>
+            esta pessoa terá {2023 - ano} anos de idade no final de 2023.
+            </div>
+        </>
+
+  }
+    const container = 
+        <>
+         <Dados sobrenome="Silva" nome = " Liniker" ano = "2003" mes = "09" dia="26" />
+        </>
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(container)
+</script>
+
+
+</body>
+</html>
