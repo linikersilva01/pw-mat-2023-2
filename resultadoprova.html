@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br"> 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cálculo da área de uma elipse</title>
+</head>
+<body>
+
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script>
+
+    function Form() { // Corrigido o nome da função para Form
+      const raioMaior = React.useRef();
+      const raioMenor = React.useRef();
+      const resultadoRef = React.useRef();
+
+      function handleChange(event) { // Corrigido o nome da função para handleChange
+        let raioMaiorValue = Number(raioMaior.current.value);
+        let raioMenorValue = Number(raioMenor.current.value);
+        let area = raioMaiorValue * raioMenorValue * Math.PI;
+
+        // Exibe o resultado formatado
+        resultadoRef.current.textContent = `Área da elipse: ${area.toLocaleString('pt-br', {
+          minimumFractionDigits: 4,
+          maximumFractionDigits: 4
+        })}`;
+      }
+
+      return (
+        <>
+          <h1> Cálculo da área de uma elipse</h1>
+          <div>
+            <label>
+              <span> Medida do raio maior </span><br/>
+              <input ref={raioMaior} onChange={handleChange} type="number" />
+            </label>
+          </div>
+          <div>
+            <label>
+              <span> Medida do raio menor </span><br/>
+              <input ref={raioMenor} onChange={handleChange} type="number" />
+            </label>
+          </div>
+          <div ref={resultadoRef}></div>
+        </>
+      )
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(<Form />)
+  </script>
+</body>
+</html>

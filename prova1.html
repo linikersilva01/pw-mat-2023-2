@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br"> 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cálculo da área de uma elipse</title>
+</head>
+<body>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <div id="root"></div>
+    <script type="text/babel"> 
+
+    // Declaração de variaveis
+
+    function Form () {
+        const raioMaiorRef = React.useRef()
+        const raioMenorRef = React.useRef()
+        const resultadoRef = React.useRef()
+
+        function handleChange(event) {
+            let raioMaior = Number(raioMaiorRef.current.value)
+            let raioMenor = Number(raioMenorRef.current.value)
+
+            // Calculo area
+            let area = ( raioMaior * raioMenor * Math.PI)
+
+
+            // Exibe o resultado do calculo da área com 4 digitos
+            resultadoRef.current.textContent = `Área da elipse: ${area.toLocaleString('pt-br', {
+            minimumFractionDigits: 4,
+            maximumFractionDigits: 4
+            })}`
+        }
+
+        // Exibir nomes e atribuir valores
+        return (
+            
+            <> 
+                <h1> Cálculo da área de uma elipse</h1>
+                <form>
+                    <div>
+
+                    <label>
+                        <span> Medida do raio maior </span><br/>
+                        <input ref={raioMaiorRef} onChange={handleChange} type="number" />
+                    </label>
+                    </div>
+                    <div>
+                    <label>
+                        <span> Medida do raio menor </span><br/>
+                        <input ref={raioMenorRef} onChange={handleChange} type="number" />
+                    </label>
+                    </div>
+                    <div ref={resultadoRef}></div>
+                </form>
+            </>
+        )
+    }
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(<Form />)
+  </script>
+</body>
+</html>

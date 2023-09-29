@@ -38,20 +38,22 @@
       const cotDolarRef = React.useRef()
       const resultadoRef = React.useRef()
 
-        function handlechange(event) {
-            let valReais = Number(valReaisRef.current.value)
-            let cotDolar = Number(cotDolarRef.current.value)           
+      function handleChange(event) {
+        let valReais = Number(valReaisRef.current.value)
+        let cotDolar = Number(cotDolarRef.current.value)
 
-            let convertido = valReais / cotDolar
+        let convertido = valReais / cotDolar
 
-            // Exibe o resultado formatado
-            resultadoRef.current.text = convertido.toLocaleString((
-                // Usa as convenções de separador de milhar e decimal
-                'en-US',
-                // USD > Dolar americano ($)
-                {style: 'currency', currency: 'USD'}
-            ))
-        }
+        // Exibe o resultado formatado
+        resultadoRef.current.textContent = convertido.toLocaleString(
+          // usa as convenções de separador de milhar e decimal
+          // da língua inglesa. Português do Brasil é pt-BR
+          'en-US',  
+          // USD ~> Dólar americano ($). Real brasileiro é BRL
+          {style: 'currency', currency: 'USD'}
+        )
+      }
+
       return (
         <>
           <h1>Conversor de real para dólar</h1>
@@ -73,7 +75,6 @@
         </>
       )
     }
-    
 
     const root = ReactDOM.createRoot(document.getElementById('root'))
     root.render(<Form />)
