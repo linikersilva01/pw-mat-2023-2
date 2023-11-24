@@ -7,7 +7,7 @@
   import { BrowserRouter, Routes, Route } from 'react-router-dom'
   import CssBaseline from '@mui/material/CssBaseline'
 
-  import Homepage from './pages/homepage'
+  import Homepage from './pages/Homepage'
   import CarList from './pages/CarList'
   import CustomerList from './pages/CustomerList'
 
